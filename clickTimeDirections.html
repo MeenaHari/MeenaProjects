@@ -21,7 +21,8 @@
 
 var currentLocation;
 var directionsMap;
-	
+
+// initialize map object with our current location	
 function initialize(location)
 {
 	console.log(location);
@@ -30,17 +31,21 @@ function initialize(location)
     directionsLongitude = location.coords.longitude;
     currentLocation = new google.maps.LatLng(directionsLatitude,directionsLongitude);
 	
+	// set currentLocation as map center
 	var mapOptions = {
 		center: currentLocation,
 		//zoom:12,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 
+	// create a map object
 	directionsMap = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	
+	// get directions to our destination
 	getDirections();
 }
 
-
+// get directions to our destination
 function getDirections() {
   console.log('getDirections');
   var directionsDisplay = new google.maps.DirectionsRenderer;
@@ -53,10 +58,12 @@ function getDirections() {
   });
 }
 
+// calculate route based on travel mode
 function calcRoute(directionsService, directionsDisplay) {
   console.log("calcRoute");
   var selectedMode = document.getElementById('mode').value;
   start = currentLocation;
+  // ClickTime location
   end = "282 2nd Street 4th floor, San Francisco, CA 94105";
   
   directionsService.route( {
@@ -64,10 +71,13 @@ function calcRoute(directionsService, directionsDisplay) {
     destination:end,
     travelMode: google.maps.TravelMode[selectedMode]
   },
+   // callback function
    function(response, status) {
           console.log("In directionsService Response");
 		  if (status == 'OK') {
-            directionsDisplay.setDirections(response);
+            // display route on the map-canvas
+			directionsDisplay.setDirections(response);
+			// print steps
 			showSteps(response);
           } else {
             window.alert('Directions request failed due to ' + status);
@@ -75,11 +85,13 @@ function calcRoute(directionsService, directionsDisplay) {
     });
 }
 
-// print steps
-
+// print steps on the directions-canvas
 function showSteps(directionResult) {
   console.log("In showSteps");
+  
+  // use only routes[0] and legs[0] since there are no waypoints
   var myRoute = directionResult.routes[0].legs[0];
+  // display steps on the directions-canvas
   var stepcanvas = document.getElementById("directions-canvas");
     
   stepcanvas.innerHTML = '';
@@ -113,7 +125,7 @@ $( document ).ready( function() {
 </head>
 
 <body>
-	<div id="floating-panel">
+	<div id="top-panel">
     
 	<h1 align=center>
 	Directions to ClickTime
