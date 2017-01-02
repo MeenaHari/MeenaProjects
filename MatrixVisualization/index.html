@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Matrix Visualization</title>
+	<link rel="stylesheet" href="css/style.css">
+
+<style>
+@import url(style.css);
+.background {
+  fill: #eee;
+}
+line {
+  stroke: #fff;
+}
+text.active {
+  fill: red;
+  font-size: 120%;
+}
+rect.highlight {
+    fill: none;
+    stroke: red;
+    stroke-width: 2;
+} 
+</style> 
+<script src="http://d3js.org/d3.v3.min.js"></script> 
+<script src="matrix.js"></script>
+</head>
+<header>
+
+<h1><i>Matrix Visualization</i></h1>
+<h4><i>Built with </i><a href="http://d3js.org/" target="_blank" rel="external"><i>d3.js</i></a></h4>
+
+</header>
+
+<aside style="margin-top:80px;">
+
+<p>Order: <br><select id="order">
+  <option value="name">by Name</option>
+  <option value="count">by Frequency</option>
+  <option value="group">by Cluster</option>
+</select>
+</p>
+
+<p>This matrix diagram visualizes request count for source and destination pairs.</p>
+
+<p>Use the drop-down menu to reorder the matrix and explore the data.</p>
+
+<p>Each colored cell represents total request count for a particular source and destination pairs.</p>
+
+<p>Based on <a href="http://bl.ocks.org/aaizemberg/78bd3dade9593896a59d" target="_blank" rel="external">D3 Category10 colors</a> coding:</p> 
+
+<ul class="multicolor1">
+    <li>request count &lt; 1000</li>
+</ul>
+<ul class="multicolor2">   
+	<li>1000 &lt; request count &lt; 2000</li>
+</ul>
+<ul class="multicolor3">  
+    <li>2000 &lt; request count &lt; 3000</li>
+</ul>
+<ul class="multicolor4">  
+    <li>3000 &lt; request count &lt; 4000</li>
+</ul>
+<ul class="multicolor5">  
+	<li>4000 &lt; request count &lt; 5000</li>
+</ul>
+<ul class="multicolor6">  	
+    <li>5000 &lt; request count &lt; 6000</li>
+</ul>
+<ul class="multicolor7">  
+    <li>6000 &lt; request count &lt; 7000</li>
+</ul>
+<ul class="multicolor8">  
+    <li>7000 &lt; request count &lt; 8000</li>
+</ul>
+<ul class="multicolor9">  
+    <li>8000 &lt; request count &lt; 9000</li>
+</ul>
+<ul class="multicolor10">  
+    <li>9000 &lt; request count &lt; 10000</li>
+</ul>
+<ul class="multicolor10">  
+    <li>request count more than 10000</li>
+</ul>
+
+</aside>
+
+<script>
+var margin = {top: 80, right: 0, bottom: 10, left: 80},
+    width = 720,
+    height = 720;
+var x = d3.scale.ordinal().rangeBands([0, width]),
+    z = d3.scale.linear().domain([0, 4]).clamp(true),
+    c = d3.scale.category10().domain(d3.range(10));
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .style("margin-left", -margin.left + "px")
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    d3.json("data.json", loadJson);
+</script>
+
+
+<footer>
+  <aside>December 30, 2016</aside>
+ 
+  <p>Based on<a href="https://gist.github.com/jdfekete/a8828c88060a1883b3f4" target="_blank" rel="external">  Les Mis&eacute;rables Co-occurrence</a>
+  by Mike Bostock&cedil;	Jean-Daniel Fekete</p>
+
+    Copyright &copy; 2016 Meenakshi Thiyagarajan.
+   
+</footer>
