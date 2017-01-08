@@ -1,0 +1,54 @@
+{
+	"nodes":[{"name":"webapp:ux","group":2},
+		{"name":"webapp:websvc","group":2},
+		{"name":"infra:logsvc","group":1},
+		{"name":"infra:dope","group":1},
+		{"name":"infra:kds","group":1},
+		{"name":"webapp:mongo","group":2}
+		],
+	"links":[
+		{"source":"webapp:ux", "srcInst":1, 
+		 "target":"webapp:websvc", "destInst":2,
+		 "value":1001},
+		{"source":"webapp:ux", "srcInst":2,
+		 "target":"webapp:websvc", "destInst":1,
+		 "value":1001},
+		{"source":"webapp:ux", "srcInst":2,
+		 "target":"webapp:websvc", "destInst":3,
+		 "value":1001},
+
+		{"source":"webapp:websvc", "srcInst":1,
+		 "target":"webapp:mongo", "destInst":1,
+		 "value":1001},
+		{"source":"webapp:websvc", "srcInst":2,
+		 "target":"webapp:mongo", "destInst":1,
+		 "value":1001},
+		{"source":"webapp:websvc", "srcInst":3,
+		 "target":"webapp:mongo", "destInst":2,
+		 "value":1001},
+
+		{"source":"infra:logsvc", "srcInst":1,
+		 "target":"webapp:mongo", "destInst":1,
+		 "value":1001},
+		{"source":"infra:logsvc", "srcInst":1,
+		 "target":"webapp:mongo", "destInst":2,
+		 "value":1001},
+		{"source":"infra:logsvc", "srcInst":2,
+		 "target":"webapp:mongo", "destInst":1,
+		 "value":1001},
+
+		{"source":"infra:dope", "srcInst":1,
+		 "target":"webapp:mongo", "destInst":1,
+		 "value":1001},
+		{"source":"infra:dope", "srcInst":1,
+		 "target":"webapp:mongo", "destInst":2,
+		 "value":1001},
+
+		{"source":"infra:kds", "srcInst":1,
+		 "target":"webapp:mongo", "destInst":1,
+		 "value":1001},
+		{"source":"infra:kds", "srcInst":1,
+		 "target":"webapp:mongo", "destInst":2,
+		 "value":1001}
+		]
+}
