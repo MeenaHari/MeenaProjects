@@ -16,6 +16,8 @@ body {
 header,
 footer,
 h1,
+/* h2,
+h3, */
 h4,
 aside {
   color: #000;
@@ -31,8 +33,10 @@ h1 {
 }
 h4{
 	text-align:center;
-}
-
+ } 
+/*h2 {
+  margin-top: 2em;
+}*/
 h4{
 	font-size: 100%;
 }
@@ -41,6 +45,13 @@ h1, h4 {
   text-rendering: optimizeLegibility;
 }
 
+/* h2 a {
+  color: #ccc;
+  left: -20px;
+  position: absolute;
+  width: 740px;
+}
+ */
 footer {
   font-size: small;
   margin-top: 8em;
@@ -62,6 +73,12 @@ aside {
   position: absolute;
   width: 180px;
 }
+
+/* .attribution {
+  font-size: small;
+  margin-bottom: 2em;
+} */
+
 
 body > p, li > p {
   /* line-height: 1.5em; */
@@ -107,21 +124,21 @@ width: 640px;
   width: 640px;
   } 
 
-  ul>li {
+ /*  ul>li {
   width: 640px;
 } 
 
 
 
 
-/* body > blockquote {
+body > blockquote {
   width: 640px;
 }
 
 blockquote q {
   display: block;
   font-style: oblique;
-}  */
+} 
 
  li {
   width: 800px;
@@ -135,7 +152,7 @@ a:not(:hover) {
   text-decoration: none;
 }
 
-/* pre, code, textarea {
+pre, code, textarea {
   font-family: "Menlo", monospace;
 }
 
@@ -145,14 +162,14 @@ code {
 
 textarea {
   font-size: 100%;
-} 
+}
 
 body > pre {
   border-left: solid 2px #ccc;
   padding-left: 18px;
   margin: 2em 0 2em -20px;
-} */
-
+} 
+ */
 .html .value,
 .javascript .string,
 .javascript .regexp {
@@ -183,6 +200,10 @@ body > pre {
 
 svg {
   font: 10px sans-serif;
+  /*margin:10%;*/
+  padding:40px 40px 40px 40px;
+ /*margin:-40%;*/
+  /*float: right;*/
 }
 
 .axis path, .axis line {
@@ -210,5 +231,42 @@ blockquote:before {
 
 blockquote:after {
   position: absolute;
-} 
- */
+}  */
+
+/* Popup container - can be anything you want */
+.canvas {
+    position: relative;
+	width: 800px;
+	height: 810px;
+}
+/* .popup  {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    width: 200px;
+    border: 1px #ccc solid;
+    border-radius: 6px;
+    box-shadow: #333 2px 2px 4px;
+    padding: 8px;
+    font-family: arial, helvetica, sans-serif;
+} */
+.popup  {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    width: 450px;
+	height:450px;
+    border: 1px #ccc solid;
+    border-radius: 6px;
+    box-shadow: #333 2px 2px 4px;
+    padding: 8px;
+    font-family: arial, helvetica, sans-serif;
+	line-height:5%;
+
+}
+.popup h2 {
+    margin: 0 0 1rem 0;
+}
+
